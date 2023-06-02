@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:final_project_mobile/tools/text.dart';
 
-class Description extends StatelessWidget {
+class Description extends StatefulWidget {
   final String name, description, header, thumbnail, vote, release;
 
   const Description({
@@ -13,6 +13,12 @@ class Description extends StatelessWidget {
     required this.vote,
     required this.release,
   }) : super(key: key);
+
+  @override
+  _DescriptionState createState() => _DescriptionState();
+}
+
+class _DescriptionState extends State<Description> {
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,7 @@ class Description extends StatelessWidget {
                   height: 250,
                   width: MediaQuery.of(context).size.width,
                   child: Image.network(
-                    header,
+                    widget.header,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -46,7 +52,7 @@ class Description extends StatelessWidget {
                   bottom: 10,
                   left: 10,
                   child: textUpdate(
-                    text: 'Average Rating - $vote',
+                    text: 'Average Rating - ${widget.vote}',
                     color: Colors.white,
                     size: 14,
                   ),
@@ -58,7 +64,7 @@ class Description extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(10),
             child: textUpdate(
-              text: name,
+              text: widget.name,
               size: 30,
               color: Colors.white,
             ),
@@ -66,7 +72,7 @@ class Description extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(left: 10),
             child: textUpdate(
-              text: 'Release On $release',
+              text: 'Release On ${widget.release}',
               size: 14,
               color: Colors.white,
             ),
@@ -83,7 +89,7 @@ class Description extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: NetworkImage(thumbnail),
+                      image: NetworkImage(widget.thumbnail),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -93,7 +99,7 @@ class Description extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(10),
                     child: textUpdate(
-                      text: description,
+                      text: widget.description,
                       size: 18,
                       color: Colors.white,
                     ),
