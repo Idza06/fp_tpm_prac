@@ -33,7 +33,7 @@ class SearchData extends SearchDelegate{
     return ListView.builder(
       itemCount: list.length,
       itemBuilder: (context, index) => Padding(
-        padding: EdgeInsets.only(bottom: 10), // Add spacing at the bottom of each row
+        padding: EdgeInsets.only(bottom: 10),
         child: GestureDetector(
           child: Card(
             elevation: 8,

@@ -1,3 +1,6 @@
+import 'package:final_project_mobile/login.dart';
+import 'package:final_project_mobile/profile.dart';
+import 'package:final_project_mobile/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:final_project_mobile/display/discover.dart';
 import 'package:final_project_mobile/display/topRated.dart';
@@ -6,12 +9,15 @@ import 'package:final_project_mobile/display/tvShows.dart';
 import 'package:final_project_mobile/display/search.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 
-import 'display/watchList.dart';
-
 class Home extends StatefulWidget {
+  final String username;
+
+  Home({required this.username});
+
   @override
   _HomeState createState() => _HomeState();
 }
+
 
 class _HomeState extends State<Home> {
   final String apiKey = 'f3f35de332da3061368b0cf2472dd565';
@@ -103,8 +109,12 @@ class _HomeState extends State<Home> {
                   height: 160,
                 ),
                 UserAccountsDrawerHeader(
-                  accountName: Text('Final Project TPM'),
-                  accountEmail: Text('fptm@practicum.com'),
+                  accountName: Text(widget.username,
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  accountEmail: Text(widget.username + '@practicum.com'),
                   currentAccountPicture: CircleAvatar(
                     backgroundImage: AssetImage('assets/profile.png'),
                   ),
@@ -117,7 +127,26 @@ class _HomeState extends State<Home> {
             Expanded(
               child: ListView(
                 children: [
-                  // Add other drawer items here
+                  ListTile(
+                    leading: Icon(Icons.people),
+                    title: Text('About Us'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Profile()),
+                      );
+                    },
+                  ),
+                  ListTile(
+                    leading: Icon(Icons.settings),
+                    title: Text('Settings'),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Settings()),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -126,7 +155,10 @@ class _HomeState extends State<Home> {
               leading: Icon(Icons.logout),
               title: Text('Logout'),
               onTap: () {
-                // Implement logout functionality here
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
               },
             ),
           ],

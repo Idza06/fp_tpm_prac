@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'display/watchList.dart';
-import 'home.dart';
+import 'login.dart';
 
-void main() => runApp(new MyApp());
+Future<void> main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    runApp(new MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,7 +16,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primaryColor: Colors.white
       ),
-      home: Home(),
+      home: Login(),
     );
   }
 }

@@ -23,14 +23,14 @@ class DiscoverMovies extends StatelessWidget {
           SizedBox(height: 25),
           CarouselSlider(
             options: CarouselOptions(
-              height: 310,
+              height: 310, //height of carousel
               autoPlay: true, // Enable auto-playing of slides
-              enlargeCenterPage: true,
-              viewportFraction: 0.9,
-              aspectRatio: 16 / 9,
+              enlargeCenterPage: true, //the center slide is larger than other
+              viewportFraction: 0.9, //each slide will occupy 90% of the viewport width
+              aspectRatio: 16 / 9, //aspect ratio of each slide
               autoPlayInterval: Duration(seconds: 5), // Set the auto-play interval
               autoPlayAnimationDuration: Duration(milliseconds: 800),
-              autoPlayCurve: Curves.fastOutSlowIn,
+              autoPlayCurve: Curves.fastOutSlowIn, //smooth animation
             ),
             items: discover.map((item) {
               return InkWell(
